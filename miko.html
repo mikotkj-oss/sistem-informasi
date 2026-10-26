@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bengkel TKJ | Computer & Network Service</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --card: #101e30;
+      --blue: #00bfff;
+      --cyan: #5cecff;
+      --text: #f3f8ff;
+      --muted: #a6b6ca;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      background: rgba(7, 17, 31, .95);
+      border-bottom: 1px solid #1e344b;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+      color: var(--cyan);
+    }
+
+    .logo span {
+      color: white;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .hero {
+      min-height: 85vh;
+      padding: 90px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 45px;
+      background:
+        radial-gradient(ellipse at 80% 40%, #063d5d 0%, transparent 50%),
+        var(--bg);
+    }
+
+    .hero-content {
+      max-width: 620px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 15px;
+      border: 1px solid #087da4;
+      color: var(--cyan);
+      border-radius: 30px;
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 5vw, 65px);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      color: var(--cyan);
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--blue);
+      color: #03111e;
+      font-weight: bold;
+      padding: 13px 24px;
+      border-radius: 8px;
+      transition: .3s;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--cyan);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px #00bfff33;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #43617b;
+      color: white;
+      margin-left: 10px;
+    }
+
+    .hero-art {
+      width: 330px;
+      height: 330px;
+      flex-shrink: 0;
+      border-radius: 30px;
+      background: linear-gradient(145deg, #123957, #0a1929);
+      border: 1px solid #226084;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 70px #00bfff15;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .hero-art .computer {
+      font-size: 110px;
+      line-height: 1.3;
+    }
+
+    .hero-art p {
+      color: var(--cyan);
+      font-weight: bold;
+      letter-spacing: 3px;
+      margin: 10px 0 0;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    section {
+      padding: 85px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .section-title h2 span {
+      color: var(--cyan);
+    }
+
+    .section-title p {
+      color: var(--muted);
+    }
+
+    .services {
+      background: #0a1727;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 28px;
+      border: 1px solid #20364c;
+      border-radius: 15px;
+      transition: .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: var(--blue);
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .price {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--cyan);
+      font-weight: bold;
+    }
+
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-box {
+      background: linear-gradient(135deg, #102b43, #0c1b2b);
+      border: 1px solid #244660;
+      border-radius: 20px;
+      padding: 35px;
+    }
+
+    .about-box .big-icon {
+      font-size: 95px;
+      text-align: center;
+    }
+
+    .about-wrap p {
+      color: var(--muted);
+      margin: 15px 0;
+    }
+
+    .check {
+      color: var(--cyan);
+      margin-right: 8px;
+    }
+
+    .contact {
+      background: #0a1727;
+      text-align: center;
+    }
+
+    .contact-box {
+      max-width: 700px;
+      margin: auto;
+      background: var(--card);
+      padding: 40px 25px;
+      border: 1px solid #244660;
+      border-radius: 18px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin: 15px 0 25px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: var(--muted);
+      border-top: 1px solid #20364c;
+      font-size: 14px;
+    }
+
+    @media (max-width: 800px) {
+      nav {
+        padding: 18px 5%;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .nav-links {
+        gap: 14px;
+        flex-wrap: wrap;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding: 65px 6%;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-art {
+        width: 260px;
+        height: 260px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 60px 6%;
+      }
+
+      .btn-outline {
+        margin: 12px 0 0;
+      }
+
+      .hero-art {
+        width: 230px;
+        height: 230px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#home" class="logo">⚡ BENGKEL<span>TKJ</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">Beranda</a></li>
+      <li><a href="#layanan">Layanan</a></li>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <span class="tag">⚡ SOLUSI TEKNOLOGI MASA KINI</span>
+      <h1>Solusi Cerdas untuk <span>Komputer & Jaringan</span></h1>
+      <p>
+        Selamat datang di Bengkel TKJ! Tempat servis komputer,
+        perawatan laptop, instalasi jaringan, dan solusi teknologi
+        dengan pelayanan ramah dan profesional.
+      </p>
+      <a href="#layanan" class="btn">Lihat Layanan →</a>
+      <a href="#tentang" class="btn btn-outline">Tentang Kami</a>
+    </div>
+
+    <div class="hero-art">
+      <div class="computer">💻</div>
+      <p>TECH SERVICE</p>
+    </div>
+  </header>
+
+  <section class="services" id="layanan">
+    <div class="section-title">
+      <h2>Layanan <span>Kami</span></h2>
+      <p>Solusi lengkap untuk kebutuhan teknologi Anda.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="icon">💻</div>
+        <h3>Servis Komputer</h3>
+        <p>Diagnosa kerusakan, perbaikan hardware, dan optimasi komputer.</p>
+        <span class="price">Mulai Rp50.000</span>
+      </div>
+
+      <div class="card">
+        <div class="icon">🖥️</div>
+        <h3>Instalasi OS</h3>
+        <p>Instalasi sistem operasi dan aplikasi sesuai kebutuhan.</p>
+        <span class="price">Mulai Rp75.000</span>
+      </div>
+
+      <div class="card">
+        <div class="icon">🌐</div>
+        <h3>Jaringan LAN</h3>
+        <p>Pemasangan kabel LAN, konfigurasi router, dan jaringan lokal.</p>
+        <span class="price">Mulai Rp100.000</span>
+      </div>
+
+      <div class="card">
+        <div class="icon">📶</div>
+        <h3>Konfigurasi Wi-Fi</h3>
+        <p>Pengaturan router, access point, dan pemecahan masalah internet.</p>
+        <span class="price">Mulai Rp50.000</span>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔧</div>
+        <h3>Upgrade Hardware</h3>
+        <p>Peningkatan RAM, pemasangan SSD, dan perawatan perangkat.</p>
+        <span class="price">Mulai Rp50.000</span>
+      </div>
+
+      <div class="card">
+        <div class="icon">🛡️</div>
+        <h3>Perawatan Sistem</h3>
+        <p>Pembersihan file sampah, pengecekan keamanan, dan optimasi.</p>
+        <span class="price">Mulai Rp35.000</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="tentang">
+    <div class="about-wrap">
+      <div>
+        <span class="tag">TENTANG BENGKEL TKJ</span>
+        <h2 style="font-size:34px">
+          Teknologi Lebih Mudah, <span style="color:#5cecff">Solusi Lebih Cepat.</span>
+        </h2>
+        <p>
+          Bengkel TKJ merupakan tempat belajar dan praktik teknologi
+          komputer serta jaringan. Kami berfokus pada pemeliharaan
+          perangkat, perakitan komputer, dan konfigurasi jaringan.
+        </p>
+        <p><span class="check">✔</span> Pelayanan ramah dan informatif</p>
+        <p><span class="check">✔</span> Pengerjaan sesuai kebutuhan</p>
+        <p><span class="check">✔</span> Harga layanan transparan</p>
+      </div>
+
+      <div class="about-box">
+        <div class="big-icon">🖥️</div>
+        <h3 style="text-align:center;color:#5cecff">
+          Computer & Network Workshop
+        </h3>
+        <p style="text-align:center">
+          Belajar • Memperbaiki • Menghubungkan
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="kontak">
+    <div class="contact-box">
+      <span class="tag">HUBUNGI KAMI</span>
+      <h2>Konsultasikan Masalah <span style="color:#5cecff">Teknologi Anda</span></h2>
+      <p>
+        Butuh bantuan komputer atau jaringan? Hubungi kami untuk
+        mendapatkan informasi layanan dan konsultasi.
+      </p>
+      <a class="btn"
+         href="https://wa.me/6281234567890?text=Halo%20Bengkel%20TKJ%2C%20saya%20ingin%20bertanya%20tentang%20layanan."
+         target="_blank" rel="noopener noreferrer">
+        💬 Hubungi WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> Bengkel TKJ. Dibuat dengan ⚡ dan kreativitas.</p>
+    <p>Teknik Komputer dan Jaringan | SMK</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
